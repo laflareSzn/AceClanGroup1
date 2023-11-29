@@ -7,6 +7,7 @@ const apiToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1NDU5ZmM2MTdjYzllZDAwNzk0MzVhN
 const baseUrl = "https://api.themoviedb.org/3/trending/movie/day?language=en-US"
 const movieImgUrl = "https://api.themoviedb.org/3/"
 
+
 window.onload = function() {
     if (window.jQuery) {  
         let allMovies = []
@@ -29,7 +30,9 @@ window.onload = function() {
                                 <div class="card-body">
                                     <h5 class="card-title">${movie.title}</h5>
                                     <p class="card-text">${movie.overview.substring(0,100) + "..."}</p>
-                                    <a href="/movies/${movie.title}/${movie.id}" class="btn btn-primary">Watch This Movie</a>
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Watch This Movie
+                                    </button>
                                 </div>
                             </div>
                         </div>`;
@@ -53,9 +56,6 @@ window.onload = function() {
             });
             renderMovies(filteredMovies); // Function to render filtered movies
         });
-
-
-        // On click movie detail page
 
     } else {
         // jQuery is not loaded
@@ -104,10 +104,12 @@ function renderMovies(movies) {
                 <div class="card-body">
                     <h5 class="card-title">${movie.title}</h5>
                     <p class="card-text">${movie.overview.substring(0,100) + "..."}</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                        Watch This Movie
+                    </button>
+                    
                 </div>
             </div>`;
         moviesContainer.appendChild(movieCard);
     });
 }
-
